@@ -1,0 +1,626 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,400&family=Roboto:wght@400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/**********************Home Page****************/
+body {
+  background-image: url("../img/wave.jpg");
+  background-position: center;
+  background-repeat: none;
+  background-attachment: fixed;
+  font-family: "Roboto", sans-serif;
+  background-color: #1E1E1E;
+}
+
+.button {
+  background-color: #55ca00;
+  border-radius: 5px;
+  border: none;
+  width: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  color: #f5fced;
+}
+.button:hover {
+  background-color: #8ffe09;
+  color: #1E1E1E;
+  cursor: pointer;
+}
+
+header {
+  width: 100%;
+  padding: 2%;
+  margin-bottom: 2%;
+  background-color: rgba(30, 30, 30, 0.8);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  /* Title animation*/
+}
+header .title-animation {
+  width: 50%;
+  font-size: 60px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  background-image: linear-gradient(to right, #8ffe09, #8ffe09, #8ffe09, #f5fced, #8ffe09, #8ffe09, #8ffe09);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: title-animation 80s linear infinite;
+  margin-bottom: 10px;
+}
+@keyframes title-animation {
+  to {
+    background-position: 4500vh;
+  }
+}
+
+.searchBar {
+  width: 33%;
+}
+.searchBar form {
+  display: flex;
+}
+.searchBar form datalist {
+  width: 0;
+}
+.searchBar #searchField {
+  width: 100%;
+  border-radius: 5px 0 0 5px;
+  padding: 10px;
+}
+.searchBar #search-btn {
+  border-radius: 0 5px 5px 0;
+}
+
+.container-home {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+
+#home-btn {
+  width: 40%;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  text-align: center;
+  color: #f5fced;
+  margin: 0;
+  background-color: #55ca00;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  display: block;
+}
+#home-btn button {
+  padding: 10px;
+  width: 100%;
+}
+#home-btn button i {
+  margin-right: 10px;
+}
+#home-btn button:hover {
+  transition: background-color 0.2s;
+  color: #1E1E1E;
+  background-color: #8ffe09;
+  cursor: pointer;
+}
+#home-btn:hover {
+  color: #1E1E1E;
+  background-color: #8ffe09;
+  cursor: pointer;
+}
+
+main {
+  width: 90%;
+  margin: auto;
+  color: #f5fced;
+  font-size: 20px;
+}
+
+/* ================================ Filters =================================*/
+#filters-btn {
+  cursor: pointer;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  background-color: #55ca00;
+  padding: 10px;
+  writing-mode: vertical-lr;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  border-radius: 0 10px 10px 0;
+}
+#filters-btn:hover {
+  background-color: #8ffe09;
+  color: #1E1E1E;
+}
+
+.filters {
+  height: 70%;
+  position: fixed;
+  z-index: 1;
+  top: 20%;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  background-color: #1E1E1E;
+  overflow: hidden;
+  border-radius: 0 10px 10px 0;
+}
+
+.filters .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  text-decoration: none;
+  color: #f5fced;
+}
+.filters .closebtn:hover {
+  color: #8ffe09;
+}
+
+.container-range-global {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper-range,
+.wrapper-range-album {
+  position: relative;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper-range .container-range,
+.wrapper-range .container-range-album,
+.wrapper-range-album .container-range,
+.wrapper-range-album .container-range-album {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  align-items: center;
+}
+.wrapper-range .slide-track,
+.wrapper-range .slider-track-album,
+.wrapper-range-album .slide-track,
+.wrapper-range-album .slider-track-album {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+}
+.wrapper-range input[type=range],
+.wrapper-range-album input[type=range] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  outline: none;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  pointer-events: none;
+}
+.wrapper-range .slider-track,
+.wrapper-range .slider-track-album,
+.wrapper-range-album .slider-track,
+.wrapper-range-album .slider-track-album {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+}
+.wrapper-range input[type=range]::-webkit-slider-runnable-track,
+.wrapper-range-album input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 5px;
+}
+.wrapper-range input[type=range]::-moz-range-track,
+.wrapper-range-album input[type=range]::-moz-range-track {
+  -moz-appearance: none;
+  height: 5px;
+}
+.wrapper-range input[type=range]::-ms-track,
+.wrapper-range-album input[type=range]::-ms-track {
+  appearance: none;
+  height: 5px;
+}
+.wrapper-range input[type=range]::-webkit-slider-thumb,
+.wrapper-range-album input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  background-color: #55ca00;
+  cursor: pointer;
+  margin-top: -9px;
+  pointer-events: auto;
+  border-radius: 50%;
+  border: solid 1px #f5fced;
+}
+.wrapper-range input[type=range]::-moz-range-thumb,
+.wrapper-range-album input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #55ca00;
+  pointer-events: auto;
+  border: solid 1px #f5fced;
+}
+.wrapper-range input[type=range]::-ms-thumb,
+.wrapper-range-album input[type=range]::-ms-thumb {
+  appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #55ca00;
+  pointer-events: auto;
+  border: solid 1px #f5fced;
+}
+.wrapper-range input[type=range]:active::-webkit-slider-thumb,
+.wrapper-range-album input[type=range]:active::-webkit-slider-thumb {
+  background-color: #f5fced;
+  border: 3px solid #55ca00;
+}
+.wrapper-range .values,
+.wrapper-range .values-album,
+.wrapper-range-album .values,
+.wrapper-range-album .values-album {
+  background-color: #55ca00;
+  width: 50%;
+  position: relative;
+  margin: auto;
+  padding: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+  color: #f5fced;
+}
+
+datalist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 250px;
+  font-size: 16px;
+}
+
+option {
+  padding: 0;
+}
+
+input[type=range] {
+  width: 250px;
+  margin: 0;
+}
+
+.filters-form {
+  height: 100%;
+}
+
+.container-filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 40%;
+  text-align: center;
+}
+.container-filters .filters_checkbox {
+  width: 80%;
+}
+.container-filters .filters_checkbox .check-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5px;
+}
+.container-filters .filters_checkbox .check-container .check {
+  display: flex;
+  flex-direction: column;
+}
+.container-filters .location-container input {
+  margin-top: 2px;
+  padding: 5px 30px;
+}
+.container-filters .btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* ================================ Artists Container =================================*/
+.artists_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.artists_container .artists_cards {
+  padding: 10px;
+}
+.artists_container .artists_cards a {
+  text-align: center;
+  text-decoration: none;
+  color: #f5fced;
+  font-size: 20px;
+}
+.artists_container .artists_cards a h4 {
+  margin-bottom: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.artists_container .artists_cards a img,
+.artists_container .artists_cards a .layer_middle {
+  height: 100%;
+  border-radius: 20px;
+  transition: transform 0.4s;
+}
+.artists_container .artists_cards a .layer_middle {
+  display: flex;
+  background-color: #55ca00;
+}
+.artists_container .artists_cards a .layer_bottom {
+  display: flex;
+  margin: 20px;
+  background-color: #009800;
+  border-radius: 22px;
+}
+.artists_container .artists_cards a .layer_bottom:hover .layer_middle {
+  transform: translate(-2.5%, -2.5%);
+  transition: transform 0.5s;
+}
+.artists_container .artists_cards a .layer_bottom:hover img {
+  transform: translate(-2.5%, -2.5%);
+  transition: transform 1s;
+}
+
+/**********************Artists Page****************/
+#artistMain {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h5 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  text-decoration: underline;
+  color: #55ca00;
+}
+
+#artists_info {
+  width: 100%;
+  margin: auto;
+  padding: 5%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: solid 1px #f5fced;
+  border-radius: 20px 20px 0 0;
+  font-family: "Montserrat" sans-serif;
+  background-color: rgba(30, 30, 30, 0.8);
+}
+#artists_info #left_info {
+  width: 30%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #55ca00;
+}
+#artists_info #left_info img {
+  border-radius: 20px;
+}
+#artists_info #right_info {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+#artists_info .right_data {
+  text-align: center;
+  list-style: none;
+}
+
+#apiData {
+  display: flex;
+  border: solid 1px #f5fced;
+  border-radius: 0 0 20px 20px;
+  border-collapse: collapse;
+  justify-content: space-around;
+  background-color: rgba(30, 30, 30, 0.8);
+}
+#apiData .listContainer {
+  display: flex;
+  flex-direction: column;
+  width: 34%;
+  padding: 2%;
+  border-collapse: collapse;
+  border: solid 1px #f5fced;
+  text-align: center;
+}
+#apiData .listContainer:first-child {
+  border-radius: 0 0 0 20px;
+}
+#apiData .listContainer:last-child {
+  border-radius: 0 0 20px 0;
+}
+#apiData ul {
+  list-style: none;
+}
+#apiData ul li {
+  width: 90%;
+  margin: auto;
+  margin-top: 5px;
+}
+
+#map {
+  margin-top: 20px;
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+}
+
+#button {
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  text-align: center;
+  color: #f5fced;
+  margin: 2% auto;
+  padding: 10px;
+  background-color: #55ca00;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+#button:hover {
+  transition: background-color 0.2s;
+  color: #1E1E1E;
+  background-color: #8ffe09;
+  cursor: pointer;
+}
+
+/******************404 Page******************/
+.page-not-found {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.page-not-found .title-animation {
+  width: 50%;
+  font-size: 60px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  background-image: linear-gradient(to right, #8ffe09, #8ffe09, #8ffe09, #f5fced, #8ffe09, #8ffe09, #8ffe09);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: title-animation 80s linear infinite;
+  margin-bottom: 10px;
+}
+@keyframes title-animation {
+  to {
+    background-position: 4500vh;
+  }
+}
+
+/******************Mobile View******************/
+@media screen and (max-width: 800px) {
+  header {
+    flex-direction: column;
+  }
+  header .searchBar {
+    order: 2;
+    width: 90%;
+  }
+  header .title-animation {
+    order: 1;
+    width: 90%;
+    font-size: 35px;
+    margin-top: 10px;
+  }
+  header .container-home {
+    margin-top: 4%;
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  header #home-btn {
+    width: 40%;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    text-align: center;
+    color: #f5fced;
+    margin: 0;
+    background-color: #55ca00;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    display: block;
+  }
+  .filters {
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    top: 0;
+    border-radius: 0;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+  }
+  .filters .filters-form {
+    left: 0;
+    width: 80%;
+  }
+  .filters .closebtn {
+    right: 40px;
+  }
+  #artists_info {
+    flex-direction: column;
+  }
+  #artists_info #left_info,
+  #artists_info #right_info {
+    width: 100%;
+  }
+  #artists_info #right_info {
+    margin-top: 10px;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #artists_info #right_info .right_data {
+    padding: 10px;
+    text-align: center;
+    list-style: none;
+  }
+  #apiData {
+    flex-direction: column;
+  }
+  #apiData .listContainer {
+    width: 100%;
+    border-radius: 0%;
+    justify-content: center;
+    padding: 20px;
+  }
+  #apiData .listContainer:first-child {
+    border-radius: 0;
+  }
+  #apiData .listContainer:last-child {
+    border-radius: 0 0 20px 20px;
+  }
+}/*# sourceMappingURL=style.css.map */

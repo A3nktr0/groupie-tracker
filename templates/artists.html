@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groupie Tracker - {{.Artists.Name}}</title>
+    <link rel="stylesheet" href="static/style/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+        {{template "header" }}
+
+    <main id="artistMain">
+        <section id="artists_info">
+            <div id="left_info">
+                <img src="{{.Artists.Image}}" alt="" />
+                <h2>{{.Artists.Name}}</h2>
+            </div>
+            <div id="right_info">
+                <div class="right_data">
+                    <h5>Creation Date:</h5>
+                    <p>{{.Artists.CreationDate}}</p>
+                </div>
+                <div class="right_data">
+                    <h5>First Album:</h5>
+                    <p>{{.Artists.FirstAlbum}}</p>
+                </div>
+                <ul class="right_data">
+                    <h5>Members:</h5>
+                    {{range .Artists.Members}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+        </section>
+        <section id="apiData">
+            <div class="listContainer">
+                <h5>Tour locations :</h5>
+                <ul>
+                    {{range .Locations.Locations}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+            <div class="listContainer">
+                <h5>Tour dates :</h5>
+                <ul>
+                    {{range .Dates.Dates}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+            <div class="listContainer">
+                <ul>
+                    {{range $key, $value := .Relations.Relations}}
+                    <li>
+                        <h5>{{$key}} :</h5>
+                        {{range $value}}
+                    </li>
+                    <ul>
+                        <li>{{.}}</li>
+                    </ul>
+                    {{end}} {{end}}
+                </ul>
+            </div>
+        </section>
+        <div id="map"></div>
+        <a id="button" href="http://172.28.6.67:8080/">Back Home</a>
+    </main>
+</body>
+
+</html>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script>
+    var map = L.map('map').setView([35.0, 0.0], 2);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    {{range .GeoCodeOut}}
+    L.marker([{{.Latitude }}, {{.Longitude }}]).addTo(map)
+        .bindPopup('{{.Name}}');
+    {{end}}
+</script>172.28.6.67

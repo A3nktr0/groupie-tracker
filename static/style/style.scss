@@ -1,0 +1,714 @@
+$Primary: #8ffe09;
+$Secondary: #55ca00;
+$Tertiary: #009800;
+$Bright: #f5fced;
+$Background: #1E1E1E;
+$bg-header: rgba(30, 30, 30, .8);
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,400&family=Roboto:wght@400;500;700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/**********************Home Page****************/
+body {
+    background-image: url("../img/wave.jpg");
+    background-position: center;
+    background-repeat: none;
+    background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+    background-color: $Background;
+}
+
+.button {
+    background-color: $Secondary;
+    border-radius: 5px;
+    border: none;
+    width: 100px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    color: $Bright;
+
+    &:hover {
+        background-color: $Primary;
+        color: $Background;
+        cursor: pointer;
+    }
+}
+
+header {
+    width: 100%;
+    padding: 2%;
+    margin-bottom: 2%;
+    background-color: $bg-header;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    /* Title animation*/
+    .title-animation {
+        width: 50%;
+        font-size: 60px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-align: center;
+        background-image:
+            linear-gradient(to right, $Primary, $Primary, $Primary, $Bright, $Primary, $Primary, $Primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: title-animation 80s linear infinite;
+        margin-bottom: 10px;
+    }
+
+    @keyframes title-animation {
+        to {
+            background-position: 4500vh;
+        }
+    }
+}
+
+.searchBar {
+    width: 33%;
+
+    form {
+        display: flex;
+
+        datalist {
+            width: 0;
+        }
+    }
+
+    #searchField {
+        width: 100%;
+        border-radius: 5px 0 0 5px;
+        padding: 10px
+    }
+
+    #search-btn {
+        border-radius: 0 5px 5px 0;
+    }
+}
+
+.container-home {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+#home-btn {
+    width: 40%;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    text-align: center;
+    color: $Bright;
+    // padding: 10px;
+    margin: 0;
+    background-color: $Secondary;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    display: block;
+
+    button {
+        padding: 10px;
+        width: 100%;
+
+        i {
+            margin-right: 10px;
+        }
+
+        &:hover {
+            transition: background-color 0.2s;
+            color: $Background;
+            background-color: $Primary;
+            cursor: pointer;
+        }
+    }
+
+
+    &:hover {
+        color: $Background;
+        background-color: $Primary;
+        cursor: pointer;
+    }
+}
+
+main {
+    width: 90%;
+    margin: auto;
+    color: $Bright;
+    font-size: 20px;
+}
+
+/* ================================ Filters =================================*/
+
+#filters-btn {
+    cursor: pointer;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    background-color: $Secondary;
+    padding: 10px;
+    writing-mode: vertical-lr;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    border-radius: 0 10px 10px 0;
+
+    &:hover {
+        background-color: $Primary;
+        color: $Background;
+    }
+}
+
+.filters {
+    height: 70%;
+    position: fixed;
+    z-index: 1;
+    top: 20%;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    background-color: $Background;
+    overflow: hidden;
+    border-radius: 0 10px 10px 0;
+}
+
+.filters .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    // margin-left: 50px;
+    text-decoration: none;
+    color: $Bright;
+
+    &:hover {
+        color: $Primary;
+    }
+}
+
+
+.container-range-global {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper-range,
+.wrapper-range-album {
+    position: relative;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    .container-range,
+    .container-range-album {
+        width: 100%;
+        height: 100px;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    .slide-track,
+    .slider-track-album {
+        width: 100%;
+        height: 5px;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+    }
+
+    input[type="range"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+        outline: none;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        background-color: transparent;
+        pointer-events: none;
+    }
+
+    .slider-track,
+    .slider-track-album {
+        width: 100%;
+        height: 5px;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        border-radius: 5px;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        height: 5px;
+    }
+
+    input[type="range"]::-moz-range-track {
+        -moz-appearance: none;
+        height: 5px;
+    }
+
+    input[type="range"]::-ms-track {
+        appearance: none;
+        height: 5px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 1.7em;
+        width: 1.7em;
+        background-color: $Secondary;
+        cursor: pointer;
+        margin-top: -9px;
+        pointer-events: auto;
+        border-radius: 50%;
+        border: solid 1px #f5fced;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        -webkit-appearance: none;
+        height: 1.7em;
+        width: 1.7em;
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: $Secondary;
+        pointer-events: auto;
+        border: solid 1px #f5fced;
+    }
+
+    input[type="range"]::-ms-thumb {
+        appearance: none;
+        height: 1.7em;
+        width: 1.7em;
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: $Secondary;
+        pointer-events: auto;
+        border: solid 1px #f5fced;
+    }
+
+    input[type="range"]:active::-webkit-slider-thumb {
+        background-color: $Bright;
+        border: 3px solid $Secondary;
+    }
+
+    .values,
+    .values-album {
+        background-color: $Secondary;
+        width: 50%;
+        position: relative;
+        margin: auto;
+        padding: 10px 0;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 18px;
+        color: $Bright;
+    }
+}
+
+
+datalist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 250px;
+    font-size: 16px;
+}
+
+option {
+    padding: 0;
+}
+
+input[type="range"] {
+    width: 250px;
+    margin: 0;
+}
+
+.filters-form {
+    height: 100%;
+}
+
+.container-filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 40%;
+    text-align: center;
+
+    .filters_checkbox {
+        width: 80%;
+
+        .check-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 5px;
+
+            .check {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+    .location-container {
+        input {
+            margin-top: 2px;
+            padding: 5px 30px;
+        }
+    }
+
+    .btn-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+
+/* ================================ Artists Container =================================*/
+
+.artists_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .artists_cards {
+        padding: 10px;
+
+        a {
+            text-align: center;
+            text-decoration: none;
+            color: $Bright;
+            font-size: 20px;
+
+            h4 {
+                margin-bottom: 15px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            img,
+            .layer_middle {
+                height: 100%;
+                border-radius: 20px;
+                transition: transform 0.4s;
+            }
+
+            .layer_middle {
+                display: flex;
+                background-color: $Secondary;
+            }
+
+            .layer_bottom {
+                display: flex;
+                margin: 20px;
+                background-color: $Tertiary;
+                border-radius: 22px;
+
+                &:hover {
+                    .layer_middle {
+                        transform: translate(-2.5%, -2.5%);
+                        transition: transform 0.5s;
+                    }
+
+                    img {
+                        transform: translate(-2.5%, -2.5%);
+                        transition: transform 1s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+/**********************Artists Page****************/
+#artistMain {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h5 {
+    margin-bottom: 10px;
+    font-size: 22px;
+    text-decoration: underline;
+    color: $Secondary;
+}
+
+#artists_info {
+    width: 100%;
+    margin: auto;
+    padding: 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: solid 1px $Bright;
+    border-radius: 20px 20px 0 0;
+    font-family: 'Montserrat' sans-serif;
+    background-color: $bg-header;
+
+    #left_info {
+        width: 30%;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: $Secondary;
+
+        img {
+            border-radius: 20px;
+        }
+    }
+
+    #right_info {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .right_data {
+        text-align: center;
+        list-style: none;
+    }
+}
+
+#apiData {
+    display: flex;
+    border: solid 1px $Bright;
+    border-radius: 0 0 20px 20px;
+    border-collapse: collapse;
+    justify-content: space-around;
+    background-color: $bg-header;
+
+    .listContainer {
+        display: flex;
+        flex-direction: column;
+        width: 34%;
+        padding: 2%;
+        border-collapse: collapse;
+        border: solid 1px $Bright;
+        text-align: center;
+
+        &:first-child {
+            border-radius: 0 0 0 20px;
+        }
+
+        &:last-child {
+            border-radius: 0 0 20px 0;
+        }
+    }
+
+    ul {
+        list-style: none;
+
+        li {
+            width: 90%;
+            margin: auto;
+            margin-top: 5px;
+        }
+    }
+}
+
+#map {
+    margin-top: 20px;
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+}
+
+#button {
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    text-align: center;
+    color: $Bright;
+    margin: 2% auto;
+    padding: 10px;
+    background-color: $Secondary;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+
+    &:hover {
+        transition: background-color 0.2s;
+        color: $Background;
+        background-color: $Primary;
+        cursor: pointer;
+    }
+}
+
+
+
+/******************404 Page******************/
+
+.page-not-found {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .title-animation {
+        width: 50%;
+        font-size: 60px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-align: center;
+        background-image:
+            linear-gradient(to right, $Primary, $Primary, $Primary, $Bright, $Primary, $Primary, $Primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: title-animation 80s linear infinite;
+        margin-bottom: 10px;
+    }
+
+    @keyframes title-animation {
+        to {
+            background-position: 4500vh;
+        }
+    }
+}
+
+
+
+/******************Mobile View******************/
+
+@media screen and (max-width: 800px) {
+
+    header {
+        // flex-wrap: wrap;
+        flex-direction: column;
+
+        .searchBar {
+            order: 2;
+            width: 90%;
+        }
+
+        .title-animation {
+            order: 1;
+            width: 90%;
+            font-size: 35px;
+            margin-top: 10px;
+        }
+
+        .container-home {
+            margin-top: 4%;
+            order: 3;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        #home-btn {
+            width: 40%;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            text-align: center;
+            color: $Bright;
+            // padding: 10px;
+            margin: 0;
+            background-color: $Secondary;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+            display: block;
+
+        }
+    }
+
+    .filters {
+        width: 100%;
+        height: 100%;
+        z-index: 15;
+        top: 0;
+        border-radius: 0;
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+
+        .filters-form {
+            left: 0;
+            width: 80%;
+        }
+
+    }
+
+    .filters .closebtn {
+        right: 40px;
+    }
+
+
+    #artists_info {
+        flex-direction: column;
+
+        #left_info,
+        #right_info {
+            width: 100%;
+        }
+
+        #right_info {
+            margin-top: 10px;
+            justify-content: center;
+            flex-direction: column;
+
+            .right_data {
+                padding: 10px;
+                text-align: center;
+                list-style: none;
+            }
+
+        }
+    }
+
+    #apiData {
+        flex-direction: column;
+
+        .listContainer {
+            width: 100%;
+            border-radius: 0%;
+            justify-content: center;
+            padding: 20px;
+
+            &:first-child {
+                border-radius: 0;
+            }
+
+            &:last-child {
+                border-radius: 0 0 20px 20px;
+            }
+        }
+    }
+}

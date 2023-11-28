@@ -1,0 +1,36 @@
+{{ define "header"}}
+<header>
+  <div class="container-home">
+    <a id="home-btn" href="http://172.28.6.67:8080/"
+      ><button class="button" type="button">
+        <i class="fa-solid fa-house"></i>Home
+      </button>
+    </a>
+  </div>
+  <h1 class="title-animation">Groupie Tracker</h1>
+  <div class="searchBar">
+    <form method="get">
+      <input
+        id="searchField"
+        type="search"
+        name="search"
+        placeholder="Search.."
+        list="suggest"
+      />
+      <datalist id="suggest">
+        {{range .}} {{$v := .Artists.Name}}
+        <option value="{{.Artists.Name}} (artist/band)"></option>
+        {{range .Artists.Members}}
+        <option value="{{.}} (members -{{$v}})"></option>
+        {{end}}
+        <option value="{{.Artists.CreationDate}} ({{.Artists.Name}})"></option>
+        <option value="{{.Artists.FirstAlbum}} ({{.Artists.Name}})"></option>
+        {{range .Locations.Locations}}
+        <option value="{{.}} ({{$v}})"></option>
+        {{end}} {{end}}
+      </datalist>
+      <button class="button" id="search-btn">Search</button>
+    </form>
+  </div>
+</header>
+{{end}}

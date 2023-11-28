@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Groupie Tracker</title>
+</head>
+
+<body>
+    {{template "header" .}}
+    <main>
+
+
+        <span id="filters-btn" onclick="openNav()"> Filters</span>
+        <div class="filters" id="filters">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <form class="filters-form" method="get">
+                <div class="container-range-global">
+                    <div class="wrapper-range">
+                        <p>Creation date:</p>
+                        <div class="values">
+                            <span id="range-left">1950</span>
+                            <span> &dash; </span>
+                            <span id="range-right">2023</span>
+                        </div>
+                        <div class="container-range">
+                            <div class="slider-track"></div>
+                            <input type="range" min="1950" max="2023" value="1950" id="slider-left" name="slider-left"
+                                oninput="slideLeft()">
+                            <input type="range" min="1950" max="2023" value="2023" id="slider-right" name="slider-right"
+                                oninput="slideRight()">
+                        </div>
+                    </div>
+                    <div class="wrapper-range-album">
+                        <p>First album date:</p>
+                        <div class="values-album">
+                            <span id="range-left-album">1950</span>
+                            <span> &dash; </span>
+                            <span id="range-right-album">2023</span>
+                        </div>
+                        <div class="container-range-album">
+                            <div class="slider-track-album"></div>
+                            <input type="range" min="1950" max="2023" value="1950" id="slider-left-album"
+                                name="slider-left-album" oninput="slideLeftAlbum()">
+                            <input type="range" min="1950" max="2023" value="2023" id="slider-right-album"
+                                name="slider-right-album" oninput="slideRightAlbum()">
+                        </div>
+                    </div>
+                </div>
+                <div class="container-filters">
+                    <div class="filters_checkbox">
+                        <legend>Number of members :</legend>
+                        <div class="check-container">
+                            <span class="check">
+                                <input type="checkbox" id="0" name="m0" value="0"><label for="0">All</label>
+                            </span>
+                            <span class="check"><input type="checkbox" id="1" name="m1" value="1"><label
+                                    for="1">1</label></span>
+                            <span class="check"><input type="checkbox" id="2" name="m2" value="2"><label
+                                    for="2">2</label></span>
+                            <span class="check"><input type="checkbox" id="3" name="m3" value="3"><label
+                                    for="3">3</label></span>
+                            <span class="check"><input type="checkbox" id="4" name="m4" value="4"><label
+                                    for="4">4</label></span>
+                            <span class="check"><input type="checkbox" id="5" name="m5" value="5"><label
+                                    for="5">5</label></span>
+                            <span class="check"><input type="checkbox" id="6" name="m6" value="6"><label
+                                    for="6">6</label></span>
+                            <span class="check"><input type="checkbox" id="7" name="m7" value="7"><label
+                                    for="7">7</label></span>
+                        </div>
+                    </div>
+                    <div class="location-container">
+                        <legend>Tour Locations :</legend>
+                        <input type="text" name="location" placeholder="city, country">
+                    </div>
+                    <div class="btn-container">
+                        <button class="button" type="submit">Apply Filters</button>
+                        <button class="button" type="submit">Reset Filters</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <section class="artists_container">
+            {{range .}}
+            <article class="artists_cards">
+                <a href="http://172.28.6.67:8080/artists?id={{.Artists.ID}}">
+                    <div>
+                        <h4>{{.Artists.Name}}</h4>
+                        <div class="layer_bottom">
+                            <div class="layer_middle">
+                                <img src="{{.Artists.Image}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {{end}}
+        </section>
+    </main>
+</body>
+
+</html>
+
+<script src="../static/scripts/scripts.js"></script>
