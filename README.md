@@ -1,6 +1,6 @@
-# Groupie Tracker SearchBar
+# Groupie Tracker 
 
-Groupie Tracker Filters is a web application that allows users to search or to filter and view information about music artists and bands. It retrieves data from an API and provides various filtering options to refine the displayed results.
+Groupie Tracker is a web application that allows users to search or to filter and view information about music artists and bands. It retrieves data from an API and provides various filtering options to refine the displayed results.
 
 ## Getting started
 
